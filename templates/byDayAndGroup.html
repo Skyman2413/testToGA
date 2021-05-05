@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Дежурный в группе в данный день</title>
+</head>
+<body>
+<form action="/infoByDayAndGroup" method="post">
+    <p><select name="groupName">
+    {% for i in groupnames %}
+            {% if i == selectedGroup %}
+                <option selected value="{{ i }}">{{ i }}</option>
+            {% else %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <p><label>День:</label><input type="number" name="day">
+    <p><input type="submit" value="Получить данные">
+</form>
+</body>
+</html>

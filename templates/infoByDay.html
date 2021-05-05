@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul class="info">
+    {% for person in data -%}
+        {% for info in person%}
+            <li>{{ info }}</li>
+        {% endfor -%}
+        <br>
+    {% endfor -%}
+</ul>
+</body>
+</html>

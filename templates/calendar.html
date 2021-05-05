@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/calendarInfo" method="post">
+    <p><select name="sel">
+        {% for i in groupnames %}
+            {% if i == selectedGroup %}
+                <option selected value="{{ i }}">{{ i }}</option>
+            {% else %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <input type="submit" value="Получить информацию">
+    </p>
+</form>
+{% if data != None %}
+    <table border="2">
+    <caption>{{ selectedGroup }} в апреле</caption>
+    <tr>
+        <td><span style="color: red"><b>Понедельник</b></span></td>
+        <td><span style="color: red"><b>Вторник</b></span></td>
+        <td><span style="color: red"><b>Среда</b></span></td>
+        <td><span style="color: red"><b>Четверг</b></span></td>
+        <td><span style="color: red"><b>Пятница</b></span></td>
+        <td><span style="color: red"><b>Суббота</b></span></td>
+        <td><span style="color: red"><b>Воскресенье</b></span></td>
+    </tr>
+    <tr>
+    <td>29 Марта</td>
+    <td>30 Марта</td>
+    <td>31 Марта</td>
+    {% for i in data -%}
+        <td> <span style="color: darkblue"><b>{{ i + 1}} Апреля:</b></span>
+         {% for m in data[i] -%}
+             <br>{{ m }}
+         {% endfor %}
+         </td>
+        {% if ((i + 4) % 7)==0 %}
+             </tr>
+         {% endif %}
+    {% endfor -%}
+    </table>
+{% endif %}
+</body>
+</html>
